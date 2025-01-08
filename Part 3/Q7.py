@@ -3,4 +3,4 @@
 # give an expression to display just the first three letters of the month.
 
 month = 'January'
-print(month[:3])
+print(f'first three letters of the month {month} is {month[:3]}')

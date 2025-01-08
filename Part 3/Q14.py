@@ -7,3 +7,4 @@
 errMsg = '** error message **'
 removedStars = errMsg.replace('*', '')
 print(removedStars.strip())
+

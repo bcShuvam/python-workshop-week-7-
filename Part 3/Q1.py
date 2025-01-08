@@ -9,7 +9,4 @@ def reduce_spaces(fileName):
     file = open(f'{fileName}.txt','r')
     return ' '.join(file.read().split()) # splits the string and then joins it
 
-line = 'This line has extra      space characters'
-
 print(reduce_spaces('Q1'))
-

@@ -3,6 +3,6 @@
 # name stored in variable last_name, give an expression that displays the
 # person’s name formatted exactly as follows: Jones, William.
 
-first_name = 'Mukesh'
-last_name = 'Sharma'
+first_name = 'Jones'
+last_name = 'William'
 print(f'{first_name}, {last_name}')

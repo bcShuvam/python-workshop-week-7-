@@ -1,7 +1,7 @@
 # PART 3
 # Q11. Give an instruction that determines if a given social security
 # number represented as a string and stored in variable ss_num, contains
-# any non- digits.
+# any non-digits.
 
 def checkSSnonDigit(ss_num):
     if ss_num.isdigit():

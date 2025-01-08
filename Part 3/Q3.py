@@ -13,40 +13,23 @@
 #         print(line)
 #
 
-def check_quotes(line: str) -> bool:
-    """
-    Checks if each quote character in the line has a matching quote of the same type.
+def check_quotes_in_file(file_name: str):
+    try:
+        with open(file_name, 'r') as file:
+            for line_number, line in enumerate(file, start=1):
+                single_quotes = 0
+                double_quotes = 0
 
-    Args:
-        line (str): A line of text.
+                for i, char in enumerate(line.strip()):
+                    if char == "'" and (i == 0 or line[i - 1] != '\\'):
+                        single_quotes += 1
+                    elif char == '"' and (i == 0 or line[i - 1] != '\\'):
+                        double_quotes += 1
 
-    Returns:
-        bool: True if all quotes are properly matched, otherwise False.
-    """
-    single_quotes = 0  # Count of single quotes (')
-    double_quotes = 0  # Count of double quotes (")
+                # Check if quotes are properly matched
+                is_matched = single_quotes % 2 == 0 and double_quotes % 2 == 0
+                print(f"Line {line_number}: {is_matched}")
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
-    i = 0
-    while i < len(line):
-        char = line[i]
-        # Check for escaped single quotes
-        if char == "'" and (i == 0 or line[i - 1] != '\\'):
-            single_quotes += 1
-        elif char == '"':
-            double_quotes += 1
-        i += 1
-
-    # Quotes are properly matched if both counts are even
-    return single_quotes % 2 == 0 and double_quotes % 2 == 0
-
-
-# Example usage
-line1 = 'He said, "Hello, how are you?"'
-line2 = "It's a sunny day"
-line3 = 'She said, "It\'s beautiful," but didn\'t stay.'
-line4 = 'Unmatched "quote'
-
-print(check_quotes(line1))  # Output: True
-print(check_quotes(line2))  # Output: True (Corrected)
-print(check_quotes(line3))  # Output: True
-print(check_quotes(line4))  # Output: False
+check_quotes_in_file('Q3.txt')

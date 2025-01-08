@@ -7,24 +7,16 @@
 # (‘a’, 1), (‘l’, 1), (‘n’, 1), (‘e’, 1) ]
 
 def count_letters(file_path):
-    # Open the file and read the content
     with open(file_path, 'r') as file:
-        # Initialize an empty dictionary for letter counts
         letter_counts = {}
 
-        # Iterate through each line in the file
         for line in file:
-            # Process each character in the line
             for char in line:
-                char = char.lower()  # Convert to lowercase
-                if char.isalpha():  # Check if the character is a letter
+                char = char.lower()
+                if char.isalpha():
                     letter_counts[char] = letter_counts.get(char, 0) + 1
 
-    # Convert the dictionary to a list of tuples and return
     return list(letter_counts.items())
 
+print(count_letters('Q4.txt'))
 
-# Example usage
-file_path = 'Q4.txt'  # Replace with your file's path
-result = count_letters(file_path)
-print(result)

@@ -3,5 +3,5 @@
 # give an expression that replaces all slashes characters with dashes.
 
 date = '12/14/2012'
-formatedDate = date.replace('/', '-')
-print(formatedDate)
+formattedDate = date.replace('/', '-')
+print(formattedDate)
