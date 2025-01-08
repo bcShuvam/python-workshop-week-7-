@@ -13,13 +13,9 @@
 # Your program should catch exceptions and print helpful error messages.
 # You should use your solution to Coding Challenge 04 to help you.
 
-# print('This program will encrypt and decrypt text files')
-# fileName = input('Enter file name: ')
-# mode = input('Enter (e) to encrypt password, and (d) to decrypt: ')
-
 def encryptFileContent(fileName):
-    readFile = open(f'{fileName}.txt', 'r')
-    writeFile = open(f'encrypted_{fileName}.txt','w')
+    readFile = open(f'{fileName}', 'r')
+    writeFile = open(f'encrypted_{fileName}','w')
     for line in readFile:
         text = line.strip()
         for char in line:
@@ -29,9 +25,27 @@ def encryptFileContent(fileName):
     readFile.close()
     writeFile.close()
 
-# def decryptedFileContent(fileName):
-#     readFile = open(f'{fileName}.txt', 'r')
-#     for line in
+def decryptFileContent(fileName):
+    readFile = open(f'{fileName}', 'r')
+    writeFile = open(f'decrypted_{fileName}', 'w')
+    for line in readFile:
+        asciiValues = line.strip().split()
+        for asciiVal in asciiValues:
+            char = chr(int(asciiVal))
+            writeFile.write(f'{char}')
+    readFile.close()
+    writeFile.close()
 
-encryptFileContent('hello')
+print('This program will encrypt and decrypt text files')
+fileName = input('Enter file name: ')
+mode = input('Enter (e) to encrypt password, and (d) to decrypt: ')
+if mode == 'e':
+    encryptFileContent(fileName)
+elif mode == 'd':
+    decryptFileContent(fileName)
+else:
+    print('Invalid mode')
+
+# encryptFileContent('hello.txt')
+# decryptFileContent('encrypted_hello.txt')
 # encryptFileContent(fileName)
