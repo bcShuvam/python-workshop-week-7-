@@ -14,38 +14,41 @@
 # You should use your solution to Coding Challenge 04 to help you.
 
 def encryptFileContent(fileName):
-    readFile = open(f'{fileName}', 'r')
-    writeFile = open(f'encrypted_{fileName}','w')
-    for line in readFile:
-        text = line.strip()
-        for char in line:
-            asciiVal = ord(char)
-            writeFile.write(f'{asciiVal} ')
-        writeFile.write('\n')
-    readFile.close()
-    writeFile.close()
+    try:
+        readFile = open(f'{fileName}', 'r')
+        writeFile = open(f'encrypted_{fileName}','w')
+        for line in readFile:
+            text = line.strip()
+            for char in line:
+                asciiVal = ord(char)
+                writeFile.write(f'{asciiVal} ')
+            writeFile.write('\n')
+        readFile.close()
+        writeFile.close()
+    except Exception as err:
+        print(err)
 
 def decryptFileContent(fileName):
-    readFile = open(f'{fileName}', 'r')
-    writeFile = open(f'decrypted_{fileName}', 'w')
-    for line in readFile:
-        asciiValues = line.strip().split()
-        for asciiVal in asciiValues:
-            char = chr(int(asciiVal))
-            writeFile.write(f'{char}')
-    readFile.close()
-    writeFile.close()
+    try:
+        readFile = open(f'{fileName}', 'r')
+        writeFile = open(f'decrypted_{fileName}', 'w')
+        for line in readFile:
+            asciiValues = line.strip().split()
+            for asciiVal in asciiValues:
+                char = chr(int(asciiVal))
+                writeFile.write(f'{char}')
+        readFile.close()
+        writeFile.close()
+    except Exception as err:
+        print(err)
 
 print('This program will encrypt and decrypt text files')
 fileName = input('Enter file name: ')
 mode = input('Enter (e) to encrypt password, and (d) to decrypt: ')
+
 if mode == 'e':
     encryptFileContent(fileName)
 elif mode == 'd':
     decryptFileContent(fileName)
 else:
     print('Invalid mode')
-
-# encryptFileContent('hello.txt')
-# decryptFileContent('encrypted_hello.txt')
-# encryptFileContent(fileName)
